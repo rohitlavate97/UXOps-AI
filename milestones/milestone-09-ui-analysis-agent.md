@@ -8,7 +8,7 @@
 - [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/ui-analysis` in `backend/analysis/ui_analysis_router.py`
 - [x] Mounted `ui_analysis_router` under `/api/v1` in `backend/main.py`
 - [x] Added unit, referential integrity, DB persistence, and API integration tests in `backend/tests/test_ui_analysis_agent.py`
-- [ ] Updated CHANGELOG.md and documentation
+- [x] Updated CHANGELOG.md and documentation
 
 ## Tasks & Deliverables
 

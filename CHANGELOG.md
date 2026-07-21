@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **UI Analysis Agent (Agent 5)**: Created `UIAnalysisIssue`, `UIMetricResult`, and `UIAnalysisResult` schemas in `backend/analysis/ui_analysis_schemas.py` and version-controlled prompt `ui_analysis_agent_v1.txt`.
+- **UI Design Engine**: Implemented `UIAnalysisAgent` in `backend/analysis/ui_analysis_agent.py` supporting alignment and spacing analysis, relying on Agent 3 component references.
+- **UI Analysis API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/ui-analysis` in `backend/analysis/ui_analysis_router.py`.
+- **UI Analysis Test Suite**: Added `backend/tests/test_ui_analysis_agent.py` testing alignment logic, empty payload handling, score computation, issue persistence, and API route authorization.
 - **Accessibility Agent (Agent 4)**: Created `AccessibilityIssue`, `ContrastAnalysisResult`, and `AccessibilityResult` schemas in `backend/analysis/accessibility_schemas.py` and version-controlled prompt `accessibility_agent_v1.txt`.
 - **WCAG 2.2 Compliance Engine**: Implemented `AccessibilityAgent` in `backend/analysis/accessibility_agent.py` supporting relative luminance contrast calculations, minimum touch target size checks (44x44px), and cross-referencing Agent 3 component IDs.
 - **Accessibility API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/accessibility` in `backend/analysis/accessibility_router.py`.
