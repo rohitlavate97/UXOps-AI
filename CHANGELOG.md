@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **UX Analysis Agent (Agent 6)**: Created `UXAnalysisIssue`, `UXMetricResult`, and `UXAnalysisResult` schemas in `backend/analysis/ux_analysis_schemas.py` and version-controlled prompt `ux_analysis_agent_v1.txt`.
+- **UX Heuristics Engine**: Implemented `UXAnalysisAgent` in `backend/analysis/ux_analysis_agent.py` supporting evaluation of discoverability, cognitive load, and feedback, referring to Agent 3's components.
+- **UX Analysis API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/ux-analysis` in `backend/analysis/ux_analysis_router.py`.
+- **UX Analysis Test Suite**: Added `backend/tests/test_ux_analysis_agent.py` testing UX heuristics, empty payload handling, score computation, database persistence, and API route authorization.
 - **UI Analysis Agent (Agent 5)**: Created `UIAnalysisIssue`, `UIMetricResult`, and `UIAnalysisResult` schemas in `backend/analysis/ui_analysis_schemas.py` and version-controlled prompt `ui_analysis_agent_v1.txt`.
 - **UI Design Engine**: Implemented `UIAnalysisAgent` in `backend/analysis/ui_analysis_agent.py` supporting alignment and spacing analysis, relying on Agent 3 component references.
 - **UI Analysis API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/ui-analysis` in `backend/analysis/ui_analysis_router.py`.
