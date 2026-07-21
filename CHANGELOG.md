@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Screenshot Validation Agent (Agent 1)**: Created `ScreenshotValidationResult` output schema in `backend/agents/validation_schema.py` and version-controlled prompt `screenshot_validation_v1.txt`.
+- **Validation Agent Logic**: Implemented `ScreenshotValidationAgent` in `backend/agents/screenshot_validation_agent.py` combining classical computer vision metrics (dimensions, aspect ratio, blur score) with structured visual validation.
+- **Pipeline Upload Gate**: Integrated `ScreenshotValidationAgent` into FastAPI upload endpoint `POST /workspaces/{id}/audits/upload` in `backend/storage/router.py`.
+- **Validation Test Suite**: Created `backend/tests/test_validation_agent.py` testing Agent 1 on valid PNG bytes, empty payloads, and layout device classifications (`desktop_web`, `mobile_app`, `tablet`).
+
+## [0.4.0] - 2026-07-21
+
+### Added
 - **Storage Provider Abstraction**: Implemented `StorageProvider` interface with `LocalStorageProvider` and `S3StorageProvider` in `backend/storage/provider.py`.
 - **Image Validation Utility**: Added binary magic byte inspection, 20 MB size limit enforcement, and resolution validation in `backend/storage/validator.py`.
 - **Screenshot Ingestion API**: Created FastAPI routes for screenshot multipart upload (`POST /workspaces/{id}/audits/upload`) and presigned S3 upload URL generation (`POST /workspaces/{id}/audits/presigned-url`).
