@@ -7,7 +7,7 @@
 - [x] Enforced traceability so recommendations tie directly back to an upstream Agent's issue (`Issue` model referencing)
 - [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/recommendations` in `backend/analysis/recommendation_router.py`
 - [x] Mounted `recommendation_router` under `/api/v1` in `backend/main.py`
-- [ ] Added unit, DB aggregation, and API integration tests in `backend/tests/test_recommendation_agent.py`
+- [x] Added unit, DB aggregation, and API integration tests in `backend/tests/test_recommendation_agent.py`
 - [ ] Updated CHANGELOG.md and documentation
 
 ## Tasks & Deliverables
