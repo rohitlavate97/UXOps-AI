@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router";
 import { useAudits } from "../../hooks/useAudits";
 import { useWorkspace } from "../../contexts/WorkspaceContext";
 import styles from "./Audits.module.css";
@@ -86,7 +87,9 @@ export function AuditsPage() {
                 </span>
               </div>
               <div className={styles.cell}>
-                <button className={styles.actionBtn}>View Report</button>
+                <Link to={`/audits/${audit.id}`} className={styles.actionBtn}>
+                  View Report
+                </Link>
               </div>
             </div>
           ))

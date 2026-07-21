@@ -1,0 +1,43 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.svgOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through except on rects */
+}
+
+.boundingBox {
+  pointer-events: auto; /* Catch clicks on boxes */
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.boundingBox:hover {
+  fill: rgba(255, 255, 255, 0.1);
+  stroke-width: 3;
+}
+
+.boundingBox.active {
+  z-index: 10;
+}

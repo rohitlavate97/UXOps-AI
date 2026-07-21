@@ -2,6 +2,15 @@ import { useState, useCallback } from "react";
 import { apiClient } from "../api/apiClient";
 import { useWorkspace } from "../contexts/WorkspaceContext";
 
+export interface Finding {
+  id: string;
+  category: string;
+  description: string;
+  severity: "high" | "medium" | "low";
+  bounding_box: [number, number, number, number] | null; // [x, y, w, h]
+  created_at: string;
+}
+
 export interface Audit {
   id: string;
   workspace_id: string;
@@ -16,11 +25,13 @@ export interface Audit {
   readability_score: number | null;
   created_at: string;
   updated_at: string;
+  findings?: Finding[]; // Optional, populated on detail fetch
 }
 
 export function useAudits() {
   const { activeWorkspace } = useWorkspace();
   const [audits, setAudits] = useState<Audit[]>([]);
+  const [currentAudit, setCurrentAudit] = useState<Audit | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -74,11 +85,30 @@ export function useAudits() {
     return response.data;
   };
 
+  const fetchAuditDetails = useCallback(async (auditId: string) => {
+    if (!activeWorkspace) return null;
+    
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await apiClient.get<Audit>(`/workspaces/${activeWorkspace.id}/audits/${auditId}`);
+      setCurrentAudit(response.data);
+      return response.data;
+    } catch (err: any) {
+      setError(err.response?.data?.detail || "Failed to fetch audit details");
+      return null;
+    } finally {
+      setIsLoading(false);
+    }
+  }, [activeWorkspace]);
+
   return {
     audits,
+    currentAudit,
     isLoading,
     error,
     fetchAudits,
+    fetchAuditDetails,
     createAudit,
     triggerAnalysis
   };

@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Detailed Audit Report UI**: Added `AuditReportPage.tsx` to visualize the results of an individual audit, complete with scorecards for overall, UI, UX, and Accessibility scores.
+- **Visual Bounding Boxes**: Created `ImageViewer.tsx` which overlays dynamic SVG bounding boxes directly over the uploaded screenshot, mapping coordinates provided by the backend vision agents.
+- **Interactive Findings**: Linked the sidebar findings list to the image viewer, allowing users to highlight specific bounding boxes when they click a finding.
+- **Audit Details Hook**: Extended `useAudits` with `fetchAuditDetails` to retrieve a specific audit and its nested findings from the backend API.
 - **Audits Hooks**: Created `useAudits` hook to encapsulate API calls for fetching, creating, and triggering analysis of audits.
 - **Dashboard UI**: Built the Dashboard page featuring high-level workspace metrics (Total Audits, Average Score, etc.) and a recent activity feed.
 - **Audits List UI**: Implemented the Audits view showing a searchable, filterable grid of all design audits with dynamic status badges.

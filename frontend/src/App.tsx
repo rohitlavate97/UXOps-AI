@@ -5,6 +5,7 @@ import { LoginPage } from "./pages/auth/LoginPage";
 import { SignupPage } from "./pages/auth/SignupPage";
 import { DashboardPage } from "./pages/dashboard/DashboardPage";
 import { AuditsPage } from "./pages/audits/AuditsPage";
+import { AuditReportPage } from "./pages/audits/AuditReportPage";
 
 // Temporary placeholder pages
 const Reports = () => <div><h1>Reports</h1><p>Generated PDF and HTML reports</p></div>;
@@ -21,6 +22,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/audits" element={<AuditsPage />} />
+          <Route path="/audits/:auditId" element={<AuditReportPage />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/activity" element={<Activity />} />
           <Route path="/settings" element={<Settings />} />
