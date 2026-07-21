@@ -2,10 +2,10 @@
 
 ## Status
 - [x] Defined structured output contracts `ScoreWeighting` and `ScoringResult` in `backend/analysis/scoring_schemas.py`
-- [ ] Implemented deterministic `ScoringAgent` in `backend/analysis/scoring_agent.py` to calculate final `overall_score` based on UI (40%), UX (30%), A11y (20%), Design System (10%)
-- [ ] Added state transition logic to mark `Audit.status = "COMPLETED"` upon successful scoring
-- [ ] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/score` in `backend/analysis/scoring_router.py`
-- [ ] Mounted `scoring_router` under `/api/v1` in `backend/main.py`
+- [x] Implemented deterministic `ScoringAgent` in `backend/analysis/scoring_agent.py` to calculate final `overall_score` based on UI (40%), UX (30%), A11y (20%), Design System (10%)
+- [x] Added state transition logic to mark `Audit.status = "COMPLETED"` upon successful scoring
+- [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/score` in `backend/analysis/scoring_router.py`
+- [x] Mounted `scoring_router` under `/api/v1` in `backend/main.py`
 - [ ] Added unit and API integration tests in `backend/tests/test_scoring_agent.py`
 - [ ] Updated CHANGELOG.md and documentation
 
