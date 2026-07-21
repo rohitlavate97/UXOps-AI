@@ -1,6 +1,7 @@
 from auth.router import router as auth_router
 from auth.router import workspace_router
 from fastapi import FastAPI
+from storage.router import router as storage_router
 
 app = FastAPI(
     title="UXOps AI API",
@@ -13,6 +14,7 @@ app = FastAPI(
 # Register routers under api/v1
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(workspace_router, prefix="/api/v1")
+app.include_router(storage_router, prefix="/api/v1")
 
 
 @app.get("/")
