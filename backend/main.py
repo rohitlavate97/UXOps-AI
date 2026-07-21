@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from analysis.accessibility_router import router as accessibility_router
+from analysis.design_system_router import router as design_system_router
 from analysis.ui_analysis_router import router as ui_analysis_router
 from analysis.ux_analysis_router import router as ux_analysis_router
 from auth.router import router as auth_router
@@ -26,6 +27,7 @@ app.include_router(component_router, prefix="/api/v1")
 app.include_router(accessibility_router, prefix="/api/v1")
 app.include_router(ui_analysis_router, prefix="/api/v1")
 app.include_router(ux_analysis_router, prefix="/api/v1")
+app.include_router(design_system_router, prefix="/api/v1")
 
 
 @app.get("/")

@@ -5,8 +5,8 @@
 - [x] Created version-controlled system prompt `backend/prompts/design_system_agent_v1.txt`
 - [x] Implemented `DesignSystemAgent` in `backend/analysis/design_system_agent.py` checking design systems (Material Design, Apple HIG, Tailwind) and RAG design guidelines
 - [x] Enforced cross-agent referential integrity mapping findings to Agent 3 component inventory (`comp_XXX`)
-- [ ] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/design-system` in `backend/analysis/design_system_router.py`
-- [ ] Mounted `design_system_router` under `/api/v1` in `backend/main.py`
+- [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/design-system` in `backend/analysis/design_system_router.py`
+- [x] Mounted `design_system_router` under `/api/v1` in `backend/main.py`
 - [ ] Added unit, referential integrity, DB persistence, and API integration tests in `backend/tests/test_design_system_agent.py`
 - [ ] Updated CHANGELOG.md and documentation
 
