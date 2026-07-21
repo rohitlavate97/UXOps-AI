@@ -9,6 +9,7 @@ from analysis.ux_analysis_router import router as ux_analysis_router
 from auth.router import router as auth_router
 from auth.router import workspace_router
 from ocr.router import router as ocr_router
+from reports.report_router import router as report_router
 from storage.router import router as storage_router
 from vision.component_router import router as component_router
 
@@ -32,6 +33,7 @@ app.include_router(ux_analysis_router, prefix="/api/v1")
 app.include_router(design_system_router, prefix="/api/v1")
 app.include_router(recommendation_router, prefix="/api/v1")
 app.include_router(scoring_router, prefix="/api/v1")
+app.include_router(report_router, prefix="/api/v1")
 
 
 @app.get("/")
