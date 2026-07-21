@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Storage Provider Abstraction**: Implemented `StorageProvider` interface with `LocalStorageProvider` and `S3StorageProvider` in `backend/storage/provider.py`.
+- **Image Validation Utility**: Added binary magic byte inspection, 20 MB size limit enforcement, and resolution validation in `backend/storage/validator.py`.
+- **Screenshot Ingestion API**: Created FastAPI routes for screenshot multipart upload (`POST /workspaces/{id}/audits/upload`) and presigned S3 upload URL generation (`POST /workspaces/{id}/audits/presigned-url`).
+- **Storage Test Suite**: Added comprehensive unit and integration tests in `backend/tests/test_storage.py`.
+
+## [0.3.0] - 2026-07-21
+
+### Added
 - **Domain Database Schema**: Implemented `Audit`, `ComponentInventory`, `Issue`, `Report`, and `DesignGuideline` SQLAlchemy models in `backend/database/models.py`.
 - **Alembic Domain Migration**: Generated and applied migration `a6b7c8d9e0f1` with composite tenant indexes (`ix_audits_workspace_status`, `ix_component_inventories_audit_ref`, `ix_issues_workspace_severity`).
 - **Database Seeding CLI**: Added `backend/database/seed.py` for automated environment population with workspaces, users, audit runs, component inventories, accessibility findings, and design guidelines.
