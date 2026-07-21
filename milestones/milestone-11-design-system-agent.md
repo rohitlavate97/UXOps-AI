@@ -7,7 +7,7 @@
 - [x] Enforced cross-agent referential integrity mapping findings to Agent 3 component inventory (`comp_XXX`)
 - [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/design-system` in `backend/analysis/design_system_router.py`
 - [x] Mounted `design_system_router` under `/api/v1` in `backend/main.py`
-- [ ] Added unit, referential integrity, DB persistence, and API integration tests in `backend/tests/test_design_system_agent.py`
+- [x] Added unit, referential integrity, DB persistence, and API integration tests in `backend/tests/test_design_system_agent.py`
 - [ ] Updated CHANGELOG.md and documentation
 
 ## Tasks & Deliverables
