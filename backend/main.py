@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from ocr.router import router as ocr_router
 from storage.router import router as storage_router
 from vision.component_router import router as component_router
+from analysis.accessibility_router import router as accessibility_router
 
 app = FastAPI(
     title="UXOps AI API",
@@ -19,6 +20,7 @@ app.include_router(workspace_router, prefix="/api/v1")
 app.include_router(storage_router, prefix="/api/v1")
 app.include_router(ocr_router, prefix="/api/v1")
 app.include_router(component_router, prefix="/api/v1")
+app.include_router(accessibility_router, prefix="/api/v1")
 
 
 @app.get("/")
