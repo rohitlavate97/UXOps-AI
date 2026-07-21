@@ -13,8 +13,8 @@ from analysis.ui_analysis_agent import UIAnalysisAgent
 from analysis.ux_analysis_agent import UXAnalysisAgent
 from common.celery_app import celery_app
 from database.models import Audit, Issue
-from database.session import async_session_maker
-from ocr.agent import OCRAgent
+from database.session import AsyncSessionLocal
+from ocr.agent import OcrAgent
 from reports.report_agent import ReportGenerationAgent
 from reports.report_schemas import ReportFormat
 from vision.component_agent import ComponentDetectionAgent
@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 
 async def run_pipeline_async(audit_id: UUID) -> None:
-    async with async_session_maker() as db:
+    async with AsyncSessionLocal() as db:
         # Fetch audit
         stmt = select(Audit).where(Audit.id == audit_id)
         result = await db.execute(stmt)
@@ -50,7 +50,7 @@ async def run_pipeline_async(audit_id: UUID) -> None:
             # 2. OCR
             audit.status = "OCR_RUNNING"
             await db.commit()
-            ocr_agent = OCRAgent()
+            ocr_agent = OcrAgent()
             await ocr_agent.extract_text(
                 audit.screenshot_s3_key, audit.id, audit.workspace_id, db
             )
