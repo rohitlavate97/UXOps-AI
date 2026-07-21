@@ -56,7 +56,7 @@ class Audit(Base):
     readability_score: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
 
     # Relationships
-    workspace: Mapped["Workspace"] = relationship("Workspace")  # noqa: F821
+    workspace: Mapped["Workspace"] = relationship("Workspace", back_populates="audits")  # noqa: F821
     created_by: Mapped[Optional["User"]] = relationship("User")  # noqa: F821
     components: Mapped[List["ComponentInventory"]] = relationship(
         "ComponentInventory", back_populates="audit", cascade="all, delete-orphan"

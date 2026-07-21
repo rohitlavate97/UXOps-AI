@@ -20,6 +20,9 @@ class Workspace(Base):
     members: Mapped[List["WorkspaceMember"]] = relationship(
         "WorkspaceMember", back_populates="workspace", cascade="all, delete-orphan"
     )
+    audits: Mapped[List["Audit"]] = relationship(
+        "Audit", back_populates="workspace", cascade="all, delete-orphan"
+    )
 
     def __repr__(self) -> str:
         return f"<Workspace(id={self.id}, name={self.name}, slug={self.slug})>"

@@ -91,16 +91,16 @@ class ScreenshotValidationAgent:
         if width == 0 or height == 0:
             return "unknown"
         aspect_ratio = width / height
-        if aspect_ratio < 0.8:
+        if aspect_ratio < 0.6:
             return "mobile_app"
-        elif 0.8 <= aspect_ratio <= 1.2:
-            return "tablet"
+        elif 0.6 <= aspect_ratio <= 1.45:
+            return "tablet" if min(width, height) >= 600 else "mobile_app"
         else:
             return "desktop_web"
 
     def _estimate_blur_score(self, file_bytes: bytes) -> float:
         """Estimates image clarity score between 0.0 and 1.0."""
         # Simple heuristic based on payload density and bytes
-        if len(file_bytes) < 1000:
-            return 0.1
+        if len(file_bytes) == 0:
+            return 0.0
         return 0.92
