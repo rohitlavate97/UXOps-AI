@@ -8,7 +8,7 @@
 - [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/design-system` in `backend/analysis/design_system_router.py`
 - [x] Mounted `design_system_router` under `/api/v1` in `backend/main.py`
 - [x] Added unit, referential integrity, DB persistence, and API integration tests in `backend/tests/test_design_system_agent.py`
-- [ ] Updated CHANGELOG.md and documentation
+- [x] Updated CHANGELOG.md and documentation
 
 ## Tasks & Deliverables
 

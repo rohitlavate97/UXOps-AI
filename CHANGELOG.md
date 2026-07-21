@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Design System Agent (Agent 7)**: Created `DesignSystemIssue`, `DesignMetricResult`, and `DesignSystemResult` schemas in `backend/analysis/design_system_schemas.py` and version-controlled prompt `design_system_agent_v1.txt`.
+- **RAG Guidelines Validation**: Implemented `DesignSystemAgent` in `backend/analysis/design_system_agent.py` to check standard material constraints and validate against user-uploaded company design rules via RAG.
+- **Design System API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/design-system` in `backend/analysis/design_system_router.py`.
+- **Design System Test Suite**: Added `backend/tests/test_design_system_agent.py` testing Material guidelines enforcement, RAG rule lookup, empty payloads, score computation, and API integration.
 - **UX Analysis Agent (Agent 6)**: Created `UXAnalysisIssue`, `UXMetricResult`, and `UXAnalysisResult` schemas in `backend/analysis/ux_analysis_schemas.py` and version-controlled prompt `ux_analysis_agent_v1.txt`.
 - **UX Heuristics Engine**: Implemented `UXAnalysisAgent` in `backend/analysis/ux_analysis_agent.py` supporting evaluation of discoverability, cognitive load, and feedback, referring to Agent 3's components.
 - **UX Analysis API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/ux-analysis` in `backend/analysis/ux_analysis_router.py`.
