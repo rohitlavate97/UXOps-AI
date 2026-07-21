@@ -1,6 +1,7 @@
 from auth.router import router as auth_router
 from auth.router import workspace_router
 from fastapi import FastAPI
+from ocr.router import router as ocr_router
 from storage.router import router as storage_router
 
 app = FastAPI(
@@ -15,6 +16,7 @@ app = FastAPI(
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(workspace_router, prefix="/api/v1")
 app.include_router(storage_router, prefix="/api/v1")
+app.include_router(ocr_router, prefix="/api/v1")
 
 
 @app.get("/")
