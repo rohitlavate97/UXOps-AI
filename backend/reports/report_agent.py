@@ -38,13 +38,11 @@ class ReportGenerationAgent:
                 {
                     "id": str(issue.id),
                     "title": issue.title,
-                    "description": issue.description,
+                    "description": issue.impact,
                     "severity": issue.severity,
                     "category": issue.category,
                     "recommendation": issue.recommendation,
-                    "component_id": (
-                        str(issue.component_id) if issue.component_id else "Global"
-                    ),
+                    "component_id": str(issue.component_ref_id) if issue.component_ref_id else "Global",
                 }
                 for issue in issues
             ],

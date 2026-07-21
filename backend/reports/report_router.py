@@ -47,11 +47,7 @@ async def generate_audit_report(
         )
 
     # Fetch issues associated with the audit
-    issue_stmt = (
-        select(Issue)
-        .where(Issue.audit_id == audit_id)
-        .order_by(Issue.priority.asc(), Issue.created_at.desc())
-    )
+    issue_stmt = select(Issue).where(Issue.audit_id == audit_id).order_by(Issue.created_at.desc())
     issue_result = await db.execute(issue_stmt)
     issues = issue_result.scalars().all()
 
