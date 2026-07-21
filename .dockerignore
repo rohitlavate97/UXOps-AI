@@ -1,0 +1,42 @@
+# Git and Version Control
+.git/
+.gitignore
+.github/
+
+# Documentation and Antigravity
+docs/
+milestones/
+AGENTS.md
+COMMANDS.md
+README.md
+CHANGELOG.md
+uxops-ai-master-prompt-v2.md
+
+# Virtual Environments and Python Caches
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
+# Node Modules and Build Artifacts
+node_modules/
+dist/
+build/
+.vite/
+
+# Editor and IDE settings
+.vscode/
+.idea/
+*.swp
+
+# Secrets and Logs
+.env*
+*.log
+uploads/
+scratch/

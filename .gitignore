@@ -27,8 +27,12 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
 
-# Node/React
+# Node / React / Vite
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -43,14 +47,17 @@ dist-ssr/
 .nuxt
 .next
 out/
-build/
 
-# IDEs
+# IDEs & Editors
 .idea/
-.vscode/
+.vscode/*
+!.vscode/tasks.json
+!.vscode/extensions.json
+!.vscode/settings.json
 *.swp
 *.swo
 .DS_Store
+*.sublime-workspace
 
 # Environment / Secret Files
 .env
@@ -60,14 +67,17 @@ build/
 .env.production.local
 *.pem
 *.key
+*.cert
 
-# Application files / Uploads
+# Application Storage & Log Files
 uploads/
-/Volumes/Element/Projects/AI/UXOps-AI/backend/uploads/
+backend/uploads/
 *.log
 *.sqlite
-/Volumes/Element/Projects/AI/UXOps-AI/scratch/
+scratch/
+.system_generated/
 
 # OS-specific
 Thumbs.db
 db.json
+Desktop.ini

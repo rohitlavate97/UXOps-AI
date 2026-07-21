@@ -1,0 +1,17 @@
+# Source & Tooling
+src/
+node_modules/
+.vite/
+*.log
+
+# Configuration
+tsconfig*.json
+vite.config.ts
+.oxlintrc.json
+Dockerfile
+.dockerignore
+
+# Environment & IDE
+.env*
+.vscode/
+.idea/
