@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Accessibility Agent (Agent 4)**: Created `AccessibilityIssue`, `ContrastAnalysisResult`, and `AccessibilityResult` schemas in `backend/analysis/accessibility_schemas.py` and version-controlled prompt `accessibility_agent_v1.txt`.
+- **WCAG 2.2 Compliance Engine**: Implemented `AccessibilityAgent` in `backend/analysis/accessibility_agent.py` supporting relative luminance contrast calculations, minimum touch target size checks (44x44px), and cross-referencing Agent 3 component IDs.
+- **Accessibility API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/accessibility` in `backend/analysis/accessibility_router.py`.
+- **Accessibility Test Suite**: Added `backend/tests/test_accessibility_agent.py` testing contrast math, WCAG 2.2 rules, score computation, issue persistence, and API route authorization.
+
+## [0.7.0] - 2026-07-21
+
+### Added
 - **Component Detection Agent (Agent 3)**: Created `DetectedComponent`, `ComponentBoundingBox`, and `ComponentInventoryResult` schemas in `backend/vision/component_schemas.py` and version-controlled prompt `component_detection_v1.txt`.
 - **Authoritative Component Inventory**: Implemented `ComponentDetectionAgent` in `backend/vision/component_agent.py` establishing master component references (`comp_001`, `comp_002`, ...) and cross-referencing upstream OCR text elements.
 - **Component API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/components` in `backend/vision/component_router.py`.
