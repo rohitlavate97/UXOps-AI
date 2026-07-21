@@ -8,7 +8,7 @@
 - [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/recommendations` in `backend/analysis/recommendation_router.py`
 - [x] Mounted `recommendation_router` under `/api/v1` in `backend/main.py`
 - [x] Added unit, DB aggregation, and API integration tests in `backend/tests/test_recommendation_agent.py`
-- [ ] Updated CHANGELOG.md and documentation
+- [x] Updated CHANGELOG.md and documentation
 
 ## Tasks & Deliverables
 

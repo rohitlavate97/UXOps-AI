@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Recommendation Agent (Agent 8)**: Created `EnhancedRecommendation` and `RecommendationResult` schemas in `backend/analysis/recommendation_schemas.py` and version-controlled prompt `recommendation_agent_v1.txt`.
+- **Recommendation Prioritization Engine**: Implemented `RecommendationAgent` in `backend/analysis/recommendation_agent.py` to aggregate raw DB issues, assign PM-style priorities (P0-P4), and estimate improvement metrics.
+- **Recommendation API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/recommendations` in `backend/analysis/recommendation_router.py`.
+- **Recommendation Test Suite**: Added `backend/tests/test_recommendation_agent.py` testing prioritization mappings, sorting, and end-to-end DB aggregation logic.
 - **Design System Agent (Agent 7)**: Created `DesignSystemIssue`, `DesignMetricResult`, and `DesignSystemResult` schemas in `backend/analysis/design_system_schemas.py` and version-controlled prompt `design_system_agent_v1.txt`.
 - **RAG Guidelines Validation**: Implemented `DesignSystemAgent` in `backend/analysis/design_system_agent.py` to check standard material constraints and validate against user-uploaded company design rules via RAG.
 - **Design System API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/design-system` in `backend/analysis/design_system_router.py`.
