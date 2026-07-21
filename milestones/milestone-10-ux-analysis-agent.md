@@ -5,8 +5,8 @@
 - [x] Created version-controlled system prompt `backend/prompts/ux_analysis_agent_v1.txt`
 - [x] Implemented `UXAnalysisAgent` in `backend/analysis/ux_analysis_agent.py` checking navigation, discoverability, learnability, and feedback
 - [x] Enforced cross-agent referential integrity mapping findings to Agent 3 component inventory (`comp_XXX`)
-- [ ] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/ux-analysis` in `backend/analysis/ux_analysis_router.py`
-- [ ] Mounted `ux_analysis_router` under `/api/v1` in `backend/main.py`
+- [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/ux-analysis` in `backend/analysis/ux_analysis_router.py`
+- [x] Mounted `ux_analysis_router` under `/api/v1` in `backend/main.py`
 - [ ] Added unit, referential integrity, DB persistence, and API integration tests in `backend/tests/test_ux_analysis_agent.py`
 - [ ] Updated CHANGELOG.md and documentation
 
