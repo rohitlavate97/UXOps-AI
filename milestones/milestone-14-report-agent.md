@@ -3,8 +3,8 @@
 ## Status
 - [x] Added `Jinja2` and `reportlab` dependencies to `backend/requirements.txt`
 - [x] Defined structured output contracts `ReportFormat` and `ReportResult` in `backend/reports/report_schemas.py`
-- [ ] Created Jinja2 templates (Markdown and HTML) for audit reports in `backend/reports/templates/`
-- [ ] Implemented `ReportGenerationAgent` in `backend/reports/report_agent.py` to aggregate Audit, Issues, and Scores into formatted documents
+- [x] Created Jinja2 templates (Markdown and HTML) for audit reports in `backend/reports/templates/`
+- [x] Implemented `ReportGenerationAgent` in `backend/reports/report_agent.py` to aggregate Audit, Issues, and Scores into formatted documents
 - [ ] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/report` in `backend/reports/report_router.py`
 - [ ] Mounted `report_router` under `/api/v1` in `backend/main.py`
 - [ ] Added unit and formatting validation tests in `backend/tests/test_report_agent.py`

@@ -1,0 +1,39 @@
+# UXOps AI Audit Report
+
+**Audit ID:** `{{ audit.id }}`
+**Title:** {{ audit.title }}
+**Status:** {{ audit.status }}
+**Date:** {{ date }}
+
+---
+
+## 🏆 Final Score: {{ audit.overall_score }}/100
+
+### Score Breakdown
+- **UI Quality:** {{ audit.ui_score if audit.ui_score is not none else 'N/A' }}
+- **UX Heuristics:** {{ audit.ux_score if audit.ux_score is not none else 'N/A' }}
+- **Accessibility:** {{ audit.accessibility_score if audit.accessibility_score is not none else 'N/A' }}
+- **Design System:** {{ audit.consistency_score if audit.consistency_score is not none else 'N/A' }}
+
+---
+
+## ⚠️ Issues Discovered ({{ issues|length }})
+
+{% if issues %}
+{% for issue in issues %}
+### {{ loop.index }}. {{ issue.title }}
+- **Severity:** `{{ issue.severity }}`
+- **Category:** {{ issue.category }}
+- **Component ID:** `{{ issue.component_id }}`
+- **Description:** {{ issue.description }}
+{% if issue.recommendation %}
+- **Recommendation:** {{ issue.recommendation }}
+{% endif %}
+{% endfor %}
+{% else %}
+No issues were found during this audit. Great job!
+{% endif %}
+
+---
+
+*Report generated automatically by UXOps AI Report Generation Agent (Agent 10).*

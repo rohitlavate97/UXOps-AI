@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UXOps AI Audit Report</title>
+    <style>
+        body { font-family: 'Inter', -apple-system, sans-serif; color: #333; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 40px; }
+        h1 { color: #1a1a1a; border-bottom: 2px solid #eaeaea; padding-bottom: 10px; }
+        .meta { color: #666; margin-bottom: 30px; font-size: 0.9em; }
+        .score-box { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin-bottom: 30px; text-align: center; }
+        .final-score { font-size: 2.5em; font-weight: bold; color: #2ecc71; margin: 10px 0; }
+        .breakdown { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 15px; }
+        .breakdown-item { flex: 1; min-width: 120px; }
+        .breakdown-label { font-size: 0.8em; text-transform: uppercase; color: #666; }
+        .breakdown-value { font-size: 1.2em; font-weight: bold; }
+        .issue { border-left: 4px solid #e74c3c; padding: 15px; margin-bottom: 20px; background-color: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .issue h3 { margin-top: 0; }
+        .severity { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; background-color: #ffeaa7; color: #d35400; }
+        .severity.critical { background-color: #ff7675; color: #fff; }
+        .severity.high { background-color: #fab1a0; color: #d63031; }
+        .footer { margin-top: 50px; text-align: center; font-size: 0.8em; color: #999; border-top: 1px solid #eaeaea; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>UXOps AI Audit Report</h1>
+    
+    <div class="meta">
+        <strong>Audit ID:</strong> {{ audit.id }}<br>
+        <strong>Title:</strong> {{ audit.title }}<br>
+        <strong>Status:</strong> {{ audit.status }}<br>
+        <strong>Date:</strong> {{ date }}
+    </div>
+
+    <div class="score-box">
+        <h2>Final Score</h2>
+        <div class="final-score">{{ audit.overall_score }}/100</div>
+        
+        <div class="breakdown">
+            <div class="breakdown-item">
+                <div class="breakdown-label">UI Quality</div>
+                <div class="breakdown-value">{{ audit.ui_score if audit.ui_score is not none else 'N/A' }}</div>
+            </div>
+            <div class="breakdown-item">
+                <div class="breakdown-label">UX Heuristics</div>
+                <div class="breakdown-value">{{ audit.ux_score if audit.ux_score is not none else 'N/A' }}</div>
+            </div>
+            <div class="breakdown-item">
+                <div class="breakdown-label">Accessibility</div>
+                <div class="breakdown-value">{{ audit.accessibility_score if audit.accessibility_score is not none else 'N/A' }}</div>
+            </div>
+            <div class="breakdown-item">
+                <div class="breakdown-label">Design System</div>
+                <div class="breakdown-value">{{ audit.consistency_score if audit.consistency_score is not none else 'N/A' }}</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Issues Discovered ({{ issues|length }})</h2>
+
+    {% if issues %}
+        {% for issue in issues %}
+        <div class="issue">
+            <h3>{{ issue.title }}</h3>
+            <p><span class="severity {{ issue.severity|lower }}">{{ issue.severity }}</span> &mdash; <strong>Category:</strong> {{ issue.category }}</p>
+            <p><strong>Description:</strong> {{ issue.description }}</p>
+            {% if issue.recommendation %}
+            <p><strong>Recommendation:</strong> {{ issue.recommendation }}</p>
+            {% endif %}
+            <p style="font-size: 0.8em; color: #666;"><strong>Component:</strong> {{ issue.component_id }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No issues were found during this audit. Great job!</p>
+    {% endif %}
+
+    <div class="footer">
+        Report generated automatically by UXOps AI Report Generation Agent (Agent 10).
+    </div>
+</body>
+</html>
