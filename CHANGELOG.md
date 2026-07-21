@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Frontend App Structure**: Initialized a React 19 + TypeScript + Vite project in the `frontend` directory.
+- **Frontend Design System**: Added `frontend/src/index.css` defining global CSS variables for colors, typography (Inter), and layout utilities to support a rich UI experience.
+- **Base Components**: Added `Sidebar` and `Navbar` components using vanilla CSS modules (`.module.css`) for layout scaffolding.
+- **Frontend Routing**: Integrated `react-router` and defined base placeholder pages (Dashboard, Audits, Reports, Activity, Settings) in `App.tsx`.
 - **Pipeline Orchestration (Celery)**: Configured Celery worker with Redis broker in `backend/common/celery_app.py`.
 - **Full Audit Pipeline Task**: Implemented asynchronous `run_full_audit_pipeline` in `backend/analysis/tasks.py` orchestrating all 10 agents sequentially, with granular `Audit.status` tracking (e.g., `VALIDATING`, `OCR_RUNNING`, `COMPLETED`).
 - **Pipeline API Endpoint**: Created `POST /workspaces/{id}/analyze` in `backend/analysis/pipeline_router.py` to trigger the background Celery task and return a `task_id` (`202 Accepted`).
