@@ -7,8 +7,8 @@
 - [x] Implemented `ReportGenerationAgent` in `backend/reports/report_agent.py` to aggregate Audit, Issues, and Scores into formatted documents
 - [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/report` in `backend/reports/report_router.py`
 - [x] Mounted `report_router` under `/api/v1` in `backend/main.py`
-- [ ] Added unit and formatting validation tests in `backend/tests/test_report_agent.py`
-- [ ] Updated CHANGELOG.md and documentation
+- [x] Added unit and formatting validation tests in `backend/tests/test_report_agent.py`
+- [x] Updated CHANGELOG.md and documentation
 
 ## Tasks & Deliverables
 

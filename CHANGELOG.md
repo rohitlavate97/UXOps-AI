@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Report Generation Agent (Agent 10)**: Created `ReportFormat` and `ReportResult` schemas in `backend/reports/report_schemas.py`.
+- **Report Formatting Engine**: Implemented `ReportGenerationAgent` in `backend/reports/report_agent.py` to aggregate DB metrics and render Markdown, HTML, JSON, and PDF reports via Jinja2 and ReportLab.
+- **Report API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/report` in `backend/reports/report_router.py` to expose formatted audit exports.
+- **Report Test Suite**: Added `backend/tests/test_report_agent.py` testing template rendering outputs and endpoint format routing.
 - **Scoring Agent (Agent 9)**: Created `ScoreWeighting`, `ScoreBreakdown`, and `ScoringResult` schemas in `backend/analysis/scoring_schemas.py`.
 - **Scoring Engine**: Implemented deterministic `ScoringAgent` in `backend/analysis/scoring_agent.py` to calculate the final `overall_score` (UI: 40%, UX: 30%, A11y: 20%, Design System: 10%), handling partial/missing scores.
 - **Scoring API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/score` in `backend/analysis/scoring_router.py` which computes the score and marks the Audit status as `COMPLETED`.
