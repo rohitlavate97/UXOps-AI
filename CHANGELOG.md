@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Audits Hooks**: Created `useAudits` hook to encapsulate API calls for fetching, creating, and triggering analysis of audits.
+- **Dashboard UI**: Built the Dashboard page featuring high-level workspace metrics (Total Audits, Average Score, etc.) and a recent activity feed.
+- **Audits List UI**: Implemented the Audits view showing a searchable, filterable grid of all design audits with dynamic status badges.
+- **Audit Creation Flow**: Added a `NewAuditModal` containing a file upload drag-and-drop zone with image preview capabilities.
 - **API Client**: Added centralized Axios client with request/response interceptors for JWT injection in `frontend/src/api/apiClient.ts`.
 - **Global Auth State**: Created `AuthContext` to handle JWT persistence, user profile fetching, and centralized login/logout logic.
 - **Workspace State**: Created `WorkspaceContext` to fetch the user's workspaces and persist active workspace selection.
