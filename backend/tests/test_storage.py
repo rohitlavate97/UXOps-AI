@@ -66,7 +66,7 @@ async def test_audit_upload_api_endpoint(client: AsyncClient, db_session: AsyncS
     await db_session.commit()
 
     # Token
-    token = create_access_token({"sub": str(user.id)})
+    token = create_access_token(str(user.id))
     headers = {"Authorization": f"Bearer {token}"}
 
     # Upload POST request
@@ -102,7 +102,7 @@ async def test_presigned_url_api_endpoint(client: AsyncClient, db_session: Async
     db_session.add(member)
     await db_session.commit()
 
-    token = create_access_token({"sub": str(user.id)})
+    token = create_access_token(str(user.id))
     headers = {"Authorization": f"Bearer {token}"}
 
     payload = {
@@ -132,7 +132,7 @@ async def test_unauthorized_upload_access(client: AsyncClient, db_session: Async
     db_session.add_all([user, workspace])
     await db_session.commit()
 
-    token = create_access_token({"sub": str(user.id)})
+    token = create_access_token(str(user.id))
     headers = {"Authorization": f"Bearer {token}"}
 
     png_bytes = get_sample_png_bytes()

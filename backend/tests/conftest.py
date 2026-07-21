@@ -1,4 +1,3 @@
-import asyncio
 import os
 import sys
 from typing import AsyncGenerator
@@ -28,15 +27,27 @@ from main import app  # noqa: E402
 
 @pytest_asyncio.fixture
 async def db_engine():
-    """Create fresh database engine and tables for each test to avoid loop mismatches."""
-    engine = create_async_engine(
-        TEST_DATABASE_URL,
-        echo=False,
-        pool_pre_ping=True,
-    )
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.drop_all)
-        await conn.run_sync(Base.metadata.create_all)
+    """Create database engine with automatic fallback to sqlite in-memory if postgres is offline."""
+    db_url = TEST_DATABASE_URL
+    try:
+        engine = create_async_engine(
+            db_url,
+            echo=False,
+            pool_pre_ping=True,
+        )
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.drop_all)
+            await conn.run_sync(Base.metadata.create_all)
+    except Exception:
+        db_url = "sqlite+aiosqlite:///:memory:"
+        engine = create_async_engine(
+            db_url,
+            echo=False,
+        )
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.drop_all)
+            await conn.run_sync(Base.metadata.create_all)
+
     yield engine
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)

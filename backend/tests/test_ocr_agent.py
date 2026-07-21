@@ -77,7 +77,7 @@ async def test_ocr_api_endpoint_integration(client: AsyncClient, db_session: Asy
     db_session.add(audit)
     await db_session.commit()
 
-    token = create_access_token({"sub": str(user.id)})
+    token = create_access_token(str(user.id))
     headers = {"Authorization": f"Bearer {token}"}
 
     response = await client.get(
