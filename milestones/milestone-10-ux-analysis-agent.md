@@ -2,9 +2,9 @@
 
 ## Status
 - [x] Defined structured output contracts `UXAnalysisIssue`, `UXMetricResult`, and `UXAnalysisResult` in `backend/analysis/ux_analysis_schemas.py`
-- [ ] Created version-controlled system prompt `backend/prompts/ux_analysis_agent_v1.txt`
-- [ ] Implemented `UXAnalysisAgent` in `backend/analysis/ux_analysis_agent.py` checking navigation, discoverability, learnability, and feedback
-- [ ] Enforced cross-agent referential integrity mapping findings to Agent 3 component inventory (`comp_XXX`)
+- [x] Created version-controlled system prompt `backend/prompts/ux_analysis_agent_v1.txt`
+- [x] Implemented `UXAnalysisAgent` in `backend/analysis/ux_analysis_agent.py` checking navigation, discoverability, learnability, and feedback
+- [x] Enforced cross-agent referential integrity mapping findings to Agent 3 component inventory (`comp_XXX`)
 - [ ] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/ux-analysis` in `backend/analysis/ux_analysis_router.py`
 - [ ] Mounted `ux_analysis_router` under `/api/v1` in `backend/main.py`
 - [ ] Added unit, referential integrity, DB persistence, and API integration tests in `backend/tests/test_ux_analysis_agent.py`
