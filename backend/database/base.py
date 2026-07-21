@@ -2,3 +2,10 @@
 # imported by Alembic
 from auth.models import User, Workspace, WorkspaceMember  # noqa
 from database.base_class import Base  # noqa
+from database.models import (  # noqa
+    Audit,
+    ComponentInventory,
+    DesignGuideline,
+    Issue,
+    Report,
+)
