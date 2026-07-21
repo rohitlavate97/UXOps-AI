@@ -59,9 +59,12 @@ class UIAnalysisAgent:
                 comp1 = component_inventory.components[i]
                 comp2 = component_inventory.components[i + 1]
 
+                comp1_ymax = comp1.bounding_box.y + comp1.bounding_box.height
+                comp2_ymin = comp2.bounding_box.y
+
                 # Check for uneven vertical spacing if they are stacked
-                if comp2.bounding_box.ymin > comp1.bounding_box.ymax:
-                    gap = comp2.bounding_box.ymin - comp1.bounding_box.ymax
+                if comp2_ymin > comp1_ymax:
+                    gap = comp2_ymin - comp1_ymax
                     if gap > 0 and gap % 4 != 0:  # Check against 4pt grid
                         issues.append(
                             UIAnalysisIssue(
@@ -81,8 +84,8 @@ class UIAnalysisAgent:
 
                 # Check for slight horizontal misalignment
                 if (
-                    abs(comp1.bounding_box.xmin - comp2.bounding_box.xmin) > 0
-                    and abs(comp1.bounding_box.xmin - comp2.bounding_box.xmin) <= 3
+                    abs(comp1.bounding_box.x - comp2.bounding_box.x) > 0
+                    and abs(comp1.bounding_box.x - comp2.bounding_box.x) <= 3
                 ):
                     issues.append(
                         UIAnalysisIssue(
