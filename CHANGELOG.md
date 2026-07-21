@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Global Polish**: Added custom sleek scrollbars and refined responsive layouts across the frontend application in `index.css`.
+- **Environment Configuration**: Provided `.env.example` defining `VITE_API_URL` for local and production deployment mapping.
 - **Detailed Audit Report UI**: Added `AuditReportPage.tsx` to visualize the results of an individual audit, complete with scorecards for overall, UI, UX, and Accessibility scores.
 - **Visual Bounding Boxes**: Created `ImageViewer.tsx` which overlays dynamic SVG bounding boxes directly over the uploaded screenshot, mapping coordinates provided by the backend vision agents.
 - **Interactive Findings**: Linked the sidebar findings list to the image viewer, allowing users to highlight specific bounding boxes when they click a finding.
