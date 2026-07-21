@@ -5,8 +5,8 @@
 - [x] Created version-controlled system prompt `backend/prompts/ui_analysis_agent_v1.txt`
 - [x] Implemented `UIAnalysisAgent` in `backend/analysis/ui_analysis_agent.py` checking spacing, alignment, typography, and consistency
 - [x] Enforced cross-agent referential integrity mapping findings to Agent 3 component inventory (`comp_XXX`)
-- [ ] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/ui-analysis` in `backend/analysis/ui_analysis_router.py`
-- [ ] Mounted `ui_analysis_router` under `/api/v1` in `backend/main.py`
+- [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/ui-analysis` in `backend/analysis/ui_analysis_router.py`
+- [x] Mounted `ui_analysis_router` under `/api/v1` in `backend/main.py`
 - [ ] Added unit, referential integrity, DB persistence, and API integration tests in `backend/tests/test_ui_analysis_agent.py`
 - [ ] Updated CHANGELOG.md and documentation
 
