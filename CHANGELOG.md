@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Domain Database Schema**: Implemented `Audit`, `ComponentInventory`, `Issue`, `Report`, and `DesignGuideline` SQLAlchemy models in `backend/database/models.py`.
+- **Alembic Domain Migration**: Generated and applied migration `a6b7c8d9e0f1` with composite tenant indexes (`ix_audits_workspace_status`, `ix_component_inventories_audit_ref`, `ix_issues_workspace_severity`).
+- **Database Seeding CLI**: Added `backend/database/seed.py` for automated environment population with workspaces, users, audit runs, component inventories, accessibility findings, and design guidelines.
+- **Multi-Tenant Isolation Tests**: Created `backend/tests/test_tenant_isolation.py` verifying strict multi-tenant query isolation and cascade deletion behavior.
+- **Antigravity CLI Optimization**: Added `AGENTS.md`, cross-platform launcher scripts (`scripts/start-agy.sh`, `scripts/start-agy.bat`, `scripts/start-agy.ps1`), VS Code tasks/settings, `COMMANDS.md`, and comprehensive documentation in `docs/`.
+
+## [0.2.0] - 2026-07-09
+
+### Added
 - **Authentication & RBAC**: Implemented secure sign-up, JWT-based sign-in, and Role-Based Access Control (RBAC) with roles like `owner`, `admin`, `member`, and `viewer`.
 - **Workspace/Tenant Model**: Set up multi-tenant workspace structures mapping user memberships to isolated workspace environments.
 - **Database Models**: Defined SQLAlchemy declarative base with UUID identifiers and audit columns, alongside User, Workspace, and WorkspaceMember entities.
@@ -26,5 +35,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Backend Dockerization**: Added `backend/Dockerfile` and `backend/requirements.txt` with foundational FastAPI/Pydantic/Celery packages.
 - **Frontend Scaffolding**: Initialized React 19 + TypeScript + Vite project in `frontend/` using non-interactive CLI.
 - **Developer Documentation**: Drafted Developer Guide (`docs/developer_guide.md`) and Architecture Decision Record (`docs/ADR/0001-project-setup-and-dev-workflow.md`).
-
-

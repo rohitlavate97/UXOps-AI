@@ -44,12 +44,100 @@ graph TD
   * Multimodal LLM vision prompting and grounding.
   * PDF report compilation (`/backend/pdf/`).
 
-### 4. Data Layer (`/backend/database`)
+### 4. Data Layer & Schema (`/backend/database`)
 * **Relational Store**: PostgreSQL 16.
 * **ORM**: SQLAlchemy 2.0 with `asyncpg` async driver.
 * **Migrations**: Managed via Alembic (`/backend/alembic.ini`).
 * **Entity Identifiers**: Universally Unique Identifiers (UUID v4) for all entity primary keys.
 * **Audit Columns**: Automated `created_at` and `updated_at` timestamps on all schema models.
+
+#### Database Entity-Relationship (ER) Diagram
+
+```mermaid
+erDiagram
+    USERS ||--o{ WORKSPACE_MEMBERS : "belongs to"
+    WORKSPACES ||--o{ WORKSPACE_MEMBERS : "has members"
+    WORKSPACES ||--o{ AUDITS : "owns"
+    WORKSPACES ||--o{ DESIGN_GUIDELINES : "configures"
+    USERS ||--o{ AUDITS : "triggers"
+    AUDITS ||--o{ COMPONENT_INVENTORIES : "detects"
+    AUDITS ||--o{ ISSUES : "reports"
+    AUDITS ||--|| REPORTS : "generates"
+
+    USERS {
+        uuid id PK
+        string email UK
+        string hashed_password
+        string full_name
+        boolean is_active
+        boolean is_superuser
+    }
+
+    WORKSPACES {
+        uuid id PK
+        string name
+        string slug UK
+        boolean is_active
+    }
+
+    WORKSPACE_MEMBERS {
+        uuid id PK
+        uuid workspace_id FK
+        uuid user_id FK
+        string role
+    }
+
+    AUDITS {
+        uuid id PK
+        uuid workspace_id FK
+        uuid created_by_id FK
+        string title
+        string target_type
+        string status
+        int overall_score
+        int accessibility_score
+    }
+
+    COMPONENT_INVENTORIES {
+        uuid id PK
+        uuid audit_id FK
+        uuid workspace_id FK
+        string component_ref_id
+        string component_type
+        json bounding_box
+        float confidence
+    }
+
+    ISSUES {
+        uuid id PK
+        uuid audit_id FK
+        uuid workspace_id FK
+        string component_ref_id
+        string category
+        string severity
+        float confidence
+        string title
+        text impact
+        text recommendation
+    }
+
+    REPORTS {
+        uuid id PK
+        uuid audit_id FK
+        uuid workspace_id FK
+        text executive_summary
+        json summary_json
+        string pdf_s3_key
+    }
+
+    DESIGN_GUIDELINES {
+        uuid id PK
+        uuid workspace_id FK
+        string title
+        text description
+        string doc_s3_key
+    }
+```
 
 ### 5. Frontend Client (`/frontend`)
 * **Stack**: React 19, TypeScript, Vite.
