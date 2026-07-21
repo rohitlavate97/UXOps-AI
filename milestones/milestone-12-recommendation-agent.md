@@ -5,8 +5,8 @@
 - [x] Created version-controlled system prompt `backend/prompts/recommendation_agent_v1.txt`
 - [x] Implemented `RecommendationAgent` in `backend/analysis/recommendation_agent.py` to aggregate issues and prioritize recommendations
 - [x] Enforced traceability so recommendations tie directly back to an upstream Agent's issue (`Issue` model referencing)
-- [ ] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/recommendations` in `backend/analysis/recommendation_router.py`
-- [ ] Mounted `recommendation_router` under `/api/v1` in `backend/main.py`
+- [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/recommendations` in `backend/analysis/recommendation_router.py`
+- [x] Mounted `recommendation_router` under `/api/v1` in `backend/main.py`
 - [ ] Added unit, DB aggregation, and API integration tests in `backend/tests/test_recommendation_agent.py`
 - [ ] Updated CHANGELOG.md and documentation
 
