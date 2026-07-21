@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Component Detection Agent (Agent 3)**: Created `DetectedComponent`, `ComponentBoundingBox`, and `ComponentInventoryResult` schemas in `backend/vision/component_schemas.py` and version-controlled prompt `component_detection_v1.txt`.
+- **Authoritative Component Inventory**: Implemented `ComponentDetectionAgent` in `backend/vision/component_agent.py` establishing master component references (`comp_001`, `comp_002`, ...) and cross-referencing upstream OCR text elements.
+- **Component API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/components` in `backend/vision/component_router.py`.
+- **Component Test Suite**: Added `backend/tests/test_component_agent.py` testing Agent 3 lifecycle, component classification, OCR cross-referencing, DB persistence, and API route integration.
+
+## [0.6.0] - 2026-07-21
+
+### Added
 - **OCR Agent (Agent 2)**: Created `OcrTextElement`, `OcrBoundingBox`, and `OcrResult` schema contracts in `backend/ocr/schemas.py` and version-controlled system prompt `ocr_agent_v1.txt`.
 - **OCR Extraction Engine**: Implemented `OcrAgent` in `backend/ocr/agent.py` supporting EasyOCR extraction, sequential element ID assignment (`txt_001`), and element classification (`heading`, `button_label`, `input_label`, `nav_link`).
 - **OCR API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/ocr` in `backend/ocr/router.py`.
