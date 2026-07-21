@@ -1,6 +1,7 @@
 import uuid
 from uuid import UUID
 
+from agents.screenshot_validation_agent import ScreenshotValidationAgent
 from auth.dependencies import WorkspaceAccess, get_current_user
 from auth.models import User
 from database.models import Audit
@@ -38,7 +39,7 @@ async def upload_audit_screenshot(
         WorkspaceAccess(allowed_roles=["owner", "admin", "member"])
     ),
 ):
-    """Uploads a UI screenshot file, validates format/dimensions, saves to object storage, and initializes an Audit record."""
+    """Uploads a UI screenshot file, validates format/dimensions, runs Screenshot Validation Agent, saves to object storage, and initializes an Audit record."""
     file_bytes = await file.read()
 
     try:
@@ -47,6 +48,18 @@ async def upload_audit_screenshot(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
+        )
+
+    # Run Screenshot Validation Agent (Agent 1)
+    validator_agent = ScreenshotValidationAgent(prompt_version="v1")
+    validation_result = await validator_agent.validate(
+        file_bytes, file.filename or "screenshot.png"
+    )
+
+    if not validation_result.is_valid_ui_screenshot:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Screenshot validation failed: {validation_result.rejection_reason}",
         )
 
     # Generate storage key
