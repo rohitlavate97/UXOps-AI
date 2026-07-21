@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **API Client**: Added centralized Axios client with request/response interceptors for JWT injection in `frontend/src/api/apiClient.ts`.
+- **Global Auth State**: Created `AuthContext` to handle JWT persistence, user profile fetching, and centralized login/logout logic.
+- **Workspace State**: Created `WorkspaceContext` to fetch the user's workspaces and persist active workspace selection.
+- **Auth UI**: Built premium `LoginPage` and `SignupPage` with dark mode glassmorphism UI.
+- **Protected Routing**: Implemented `ProtectedRoute` to restrict unauthenticated access to the dashboard in `App.tsx`.
 - **Frontend App Structure**: Initialized a React 19 + TypeScript + Vite project in the `frontend` directory.
 - **Frontend Design System**: Added `frontend/src/index.css` defining global CSS variables for colors, typography (Inter), and layout utilities to support a rich UI experience.
 - **Base Components**: Added `Sidebar` and `Navbar` components using vanilla CSS modules (`.module.css`) for layout scaffolding.
