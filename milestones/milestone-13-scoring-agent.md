@@ -6,8 +6,8 @@
 - [x] Added state transition logic to mark `Audit.status = "COMPLETED"` upon successful scoring
 - [x] Created FastAPI endpoint route `GET /workspaces/{id}/audits/{id}/score` in `backend/analysis/scoring_router.py`
 - [x] Mounted `scoring_router` under `/api/v1` in `backend/main.py`
-- [ ] Added unit and API integration tests in `backend/tests/test_scoring_agent.py`
-- [ ] Updated CHANGELOG.md and documentation
+- [x] Added unit and API integration tests in `backend/tests/test_scoring_agent.py`
+- [x] Updated CHANGELOG.md and documentation
 
 ## Tasks & Deliverables
 

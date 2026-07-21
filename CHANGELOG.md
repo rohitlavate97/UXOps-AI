@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Scoring Agent (Agent 9)**: Created `ScoreWeighting`, `ScoreBreakdown`, and `ScoringResult` schemas in `backend/analysis/scoring_schemas.py`.
+- **Scoring Engine**: Implemented deterministic `ScoringAgent` in `backend/analysis/scoring_agent.py` to calculate the final `overall_score` (UI: 40%, UX: 30%, A11y: 20%, Design System: 10%), handling partial/missing scores.
+- **Scoring API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/score` in `backend/analysis/scoring_router.py` which computes the score and marks the Audit status as `COMPLETED`.
+- **Scoring Test Suite**: Added `backend/tests/test_scoring_agent.py` testing math normalization and API state transitions.
 - **Recommendation Agent (Agent 8)**: Created `EnhancedRecommendation` and `RecommendationResult` schemas in `backend/analysis/recommendation_schemas.py` and version-controlled prompt `recommendation_agent_v1.txt`.
 - **Recommendation Prioritization Engine**: Implemented `RecommendationAgent` in `backend/analysis/recommendation_agent.py` to aggregate raw DB issues, assign PM-style priorities (P0-P4), and estimate improvement metrics.
 - **Recommendation API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/recommendations` in `backend/analysis/recommendation_router.py`.
