@@ -6,8 +6,8 @@
 - [x] Updated `Audit` model/schema to include granular status tracking (e.g., `VALIDATING`, `OCR_RUNNING`)
 - [x] Created FastAPI `POST /analyze` endpoint in `backend/analysis/pipeline_router.py` to trigger the Celery task
 - [x] Mounted `pipeline_router` under `/api/v1` in `backend/main.py`
-- [ ] Added unit and integration tests for the task execution in `backend/tests/test_celery_pipeline.py`
-- [ ] Updated CHANGELOG.md and documentation
+- [x] Added unit and integration tests for the task execution in `backend/tests/test_celery_pipeline.py`
+- [x] Updated CHANGELOG.md and documentation
 
 ## Tasks & Deliverables
 

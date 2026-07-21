@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Pipeline Orchestration (Celery)**: Configured Celery worker with Redis broker in `backend/common/celery_app.py`.
+- **Full Audit Pipeline Task**: Implemented asynchronous `run_full_audit_pipeline` in `backend/analysis/tasks.py` orchestrating all 10 agents sequentially, with granular `Audit.status` tracking (e.g., `VALIDATING`, `OCR_RUNNING`, `COMPLETED`).
+- **Pipeline API Endpoint**: Created `POST /workspaces/{id}/analyze` in `backend/analysis/pipeline_router.py` to trigger the background Celery task and return a `task_id` (`202 Accepted`).
+- **Pipeline Tests**: Added integration tests in `backend/tests/test_celery_pipeline.py`.
 - **Report Generation Agent (Agent 10)**: Created `ReportFormat` and `ReportResult` schemas in `backend/reports/report_schemas.py`.
 - **Report Formatting Engine**: Implemented `ReportGenerationAgent` in `backend/reports/report_agent.py` to aggregate DB metrics and render Markdown, HTML, JSON, and PDF reports via Jinja2 and ReportLab.
 - **Report API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/report` in `backend/reports/report_router.py` to expose formatted audit exports.
