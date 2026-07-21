@@ -8,6 +8,7 @@ celery_app = Celery(
     "uxops_tasks",
     broker=redis_url,
     backend=redis_url,
+    include=["analysis.tasks"]
 )
 
 celery_app.conf.update(
