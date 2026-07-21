@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **OCR Agent (Agent 2)**: Created `OcrTextElement`, `OcrBoundingBox`, and `OcrResult` schema contracts in `backend/ocr/schemas.py` and version-controlled system prompt `ocr_agent_v1.txt`.
+- **OCR Extraction Engine**: Implemented `OcrAgent` in `backend/ocr/agent.py` supporting EasyOCR extraction, sequential element ID assignment (`txt_001`), and element classification (`heading`, `button_label`, `input_label`, `nav_link`).
+- **OCR API Endpoint**: Created FastAPI route `GET /workspaces/{id}/audits/{id}/ocr` in `backend/ocr/router.py`.
+- **OCR Test Suite**: Created `backend/tests/test_ocr_agent.py` testing Agent 2 extraction lifecycle, element classification, empty payload handling, and HTTP GET OCR API route integration.
+
+## [0.5.0] - 2026-07-21
+
+### Added
 - **Screenshot Validation Agent (Agent 1)**: Created `ScreenshotValidationResult` output schema in `backend/agents/validation_schema.py` and version-controlled prompt `screenshot_validation_v1.txt`.
 - **Validation Agent Logic**: Implemented `ScreenshotValidationAgent` in `backend/agents/screenshot_validation_agent.py` combining classical computer vision metrics (dimensions, aspect ratio, blur score) with structured visual validation.
 - **Pipeline Upload Gate**: Integrated `ScreenshotValidationAgent` into FastAPI upload endpoint `POST /workspaces/{id}/audits/upload` in `backend/storage/router.py`.
